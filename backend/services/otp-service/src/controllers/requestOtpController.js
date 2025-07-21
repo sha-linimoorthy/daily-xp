@@ -18,7 +18,7 @@ const requestOtp = async (req, res) => {
     }
 
     try {
-        await generateAndSentOtp(email, ip);
+        await generateAndSendOtp(email, ip);
         res.status(200).json({message: 'OTP sent successfully'});
     } catch (err) {
         console.log(err);
