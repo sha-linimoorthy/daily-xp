@@ -1,6 +1,6 @@
 //TO -DO Email validation in frontend
 
-const { generateAndSentOtp } = require('../services/generateOtpService');
+const { generateAndSendOtp } = require('../services/generateOtpService');
 
 function getIp(req) {
     const forwarded = req.headers['x-forwarded-for'];
