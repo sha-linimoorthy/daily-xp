@@ -3,7 +3,7 @@
 const { generateAndSentOtp } = require('../services/generateOtpService');
 
 function getIp(req) {
-    const forwarded = req.headers['x-forwarder-for'];
+    const forwarded = req.headers['x-forwarded-for'];
     return forwarded ? forwarded.split(',')[0].trim() : req.connection.remoteAddress;
 }
 
