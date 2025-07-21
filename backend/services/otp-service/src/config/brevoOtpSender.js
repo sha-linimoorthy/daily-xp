@@ -21,9 +21,9 @@ const sendOtpEmail = async (toEmail, otp) => {
             'Content-Type': 'application/json',
         }
     });
-        console.log(`OPT email sent to ${toEmail}`);
+        console.log(`OTP email sent to ${toEmail}`);
     } catch (err) {
-        console.log(`Failed to send OPT email to ${toEmail}:`, err.response?.data || err.message);
+        console.log(`Failed to send OTP email to ${toEmail}:`, err.response?.data || err.message);
     }
 
 };
