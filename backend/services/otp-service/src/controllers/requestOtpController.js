@@ -2,8 +2,15 @@
 
 const { generateAndSentOtp } = require('../services/generateOtpService');
 
+function getIp(req) {
+    const forwarded = req.headers['x-forwarder-for'];
+    return forwarded ? forwarded.split(',')[0].trim() : req.connection.remoteAddress;
+}
+
+
 const requestOtp = async (req, res) => {
     const { email } = req.body;
+    const ip = getIp(req);
 
     if(!email)
     {
@@ -11,11 +18,11 @@ const requestOtp = async (req, res) => {
     }
 
     try {
-        await generateAndSentOtp(email);
-        res.status(200).json({error: 'OTP sent successfully'});
+        await generateAndSentOtp(email, ip);
+        res.status(200).json({message: 'OTP sent successfully'});
     } catch (err) {
         console.log(err);
-        res.status(500).json({ error: 'Failed to send OTP'});
+        res.status(500).json({ error: err.message});
     }
 }
 
