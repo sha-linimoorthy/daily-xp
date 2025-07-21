@@ -10,7 +10,7 @@ const verifyOtp = async(email, inputOtp) => {
         [email]
     );
 
-        if(result.rowCount == 0)
+        if(result.rowCount === 0)
         {
             return { status:404, message: 'OTP not found for this email'};
         }
